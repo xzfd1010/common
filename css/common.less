@@ -1,0 +1,9 @@
+// 清除浮动，以及margin失效的bug
+.fix:after,
+.fix:before{
+  content:"";
+  display:table;
+}
+.fix:after{
+  clear:both;
+}
