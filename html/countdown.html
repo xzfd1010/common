@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>Title</title>
+</head>
+<body>
+<button type="button" id="btn-countdown">获取验证码</button>
+<a href="test1.html">跳转链接</a>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.countdown.js"></script>
+<script>
+    $(document).on("visibilitychange",function(){
+        if(value.length >=12 && window.performance.navigation.type == 2){
+            alert("back")
+        }
+    })
+
+    $(window).on("pageshow",function(event){
+        if(window.performance && window.performance.navigation.type == 2){
+            alert("aaa")
+        }
+    });
+    $("#btn-countdown").on("click",function(){
+        $(this).countDown(60)
+    })
+
+//    $("#btn-countdown").countDown(60)
+
+</script>
+</body>
+</html>
