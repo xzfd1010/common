@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>tmt-workflow Test</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <script src="../js/flexible.js"></script>
+    <link rel="stylesheet" href="../css/style-module.css">
+    <link rel="stylesheet" type="text/css" href="../css/style-index.css"/>
+</head>
+<body>
+<div class="pre-loading pos-a"></div>
+<div class="wrapper">
+    <% var name = "日期控件" %>
+    <% include _block/header.html %>
+    <div class="innerbd layer-wrapper">
+        <input type="text" placeholder="选择日期" id="selectDate">
+    </div>
+    <% include _block/footer.html %>
+</div>
+<div id="targetContainer"></div>
+
+<script src="../js/fastclick.js"></script>
+<script src="../js/zepto.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/DateSelector.js"></script>
+<script>
+    new DateSelector({
+        input: 'selectDate',//点击触发插件的input框的id
+        container: 'targetContainer',//插件插入的容器id
+        type: 0,
+        //0：不需要tab切换，自定义滑动内容，建议小于三个；
+        //1：需要tab切换，【年月日】【时分】完全展示，固定死，可设置开始年份和结束年份
+        param: [1, 1, 1, 0, 0],
+        //设置['year','month','day','hour','minute'],1为需要，0为不需要,需要连续的1
+        beginTime: [1970, 1, 1],//如空数组默认设置成1970年1月1日0时0分开始，如需要设置开始时间点，数组的值对应param参数的对应值。
+        endTime: [2026, 12, 31],//如空数组默认设置成次年12月31日23时59分结束，如需要设置结束时间点，数组的值对应param参数的对应值。
+        recentTime: [2017, 6, 15],//如不需要设置当前时间，被为空数组，如需要设置的开始的时间点，数组的值对应param参数的对应值。
+        success: function (arr, arr2) {
+        }//回调
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+/*
+ * css reset
+ */
+/*global*/
+@fontColor: #666;
+@placeholderColor:#ccc;
+@linkColor:#666;
+@hoverColor:#06c;
+html,
+body {
+  color: @fontColor;
+  font-family: "Microsoft YaHei", "Microsoft YaHei UI", serif;
+}
+
+.arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body,
+header,
+footer,
+section,
+div,
+dl,
+dt,
+dd,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+textarea,
+p,
+span,
+em,
+i,
+figure,
+table,
+tr,
+td,
+th,
+img,
+button{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img,button {
+  background: none;
+  border: none;
+}
+
+em {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ul, li {
+  list-style: none;
+}
+
+select, input, textarea {
+  font-size: 100%;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+input:focus,
+textarea:focus,
+button{
+  outline: none;
+}
+
+input::placeholder{
+  color:#ccc;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+// 清除浮动+margin失效
+.fix {
+  zoom: 1;
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/*float*/
+.fl{
+  float: left;
+  display: inline;
+}
+
+.fr {
+  float: right;
+  display: inline;
+}
+
+/* link */
+a {
+  color: @linkColor;
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover {
+  color:@hoverColor ;
+}
+
+a.aline:hover,
+.undL {
+  text-decoration: underline;
+}
+
+.cursor-p {
+  cursor: pointer;
+}
+
+.lineT {
+  text-decoration: line-through
+}
+
+/*font*/
+.tc {
+  text-align: center;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tr {
+  text-align: right;
+}
+
+.vt {
+  vertical-align: top;
+}
+
+.vm {
+  vertical-align: middle;
+}
+
+.vb {
+  vertical-align: bottom;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.em2 {
+  text-indent: 2em;
+}
+
+/*hidden*/
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.overHidden {
+  overflow: hidden;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.center {
+  margin: 0 auto
+}
+
+.wid100 {
+  width: 100%;
+}
+
+/*position*/
+.pos-r,
+.iw {
+  position: relative; /*z-index:1*/
+}
+
+.pos-a {
+  position: absolute
+}
+
+.iw i, .iw s {
+  position: absolute;
+  overflow: hidden;
+}
+
+
+[data-dpr="1"] .mt60 {
+  margin-top: 0.16103rem;
+}
+
+[data-dpr="2"] .mt60 {
+  margin-top: 0.32206rem;
+}
+
+[data-dpr="3"] .mt60 {
+  margin-top: 0.48309rem;
+}
+
+[data-dpr="1"] .mt120 {
+  margin-top: 0.32206rem;
+}
+
+[data-dpr="2"] .mt120 {
+  margin-top: 0.64412rem;
+}
+
+[data-dpr="3"] .mt120 {
+  margin-top: 0.96618rem;
+}
+
+[data-dpr="1"] .mt90 {
+  margin-top: 0.24155rem;
+}
+
+[data-dpr="2"] .mt90 {
+  margin-top: 0.48309rem;
+}
+
+[data-dpr="3"] .mt90 {
+  margin-top: 0.72464rem;
+}
+
+[data-dpr="1"] .mb30 {
+  margin-bottom: 0.08052rem;
+}
+
+[data-dpr="2"] .mb30 {
+  margin-bottom: 0.16103rem;
+}
+
+[data-dpr="3"] .mb30 {
+  margin-bottom: 0.24155rem;
+}
+
+.ht150 {
+  height: 1.33rem;
+  line-height: 1.33rem;
+}
+
+[data-dpr="1"] .mt150 {
+  margin-top: 0.40258rem;
+}
+
+[data-dpr="2"] .mt150 {
+  margin-top: 0.80515rem;
+}
+
+[data-dpr="3"] .mt150 {
+  margin-top: 1.20773rem;
+}
+
+[data-dpr="1"] .ht330 {
+  height: 0.88567rem;
+}
+
+[data-dpr="2"] .ht330 {
+  height: 1.77134rem;
+}
+
+[data-dpr="3"] .ht330 {
+  height: 2.657rem;
+}
+
+[data-dpr="1"] .ht120 {
+  height: 0.32206rem;
+  line-height: 0.32206rem;
+}
+
+[data-dpr="2"] .ht120 {
+  height: 0.64412rem;
+  line-height: 0.64412rem;
+}
+
+[data-dpr="3"] .ht120 {
+  height: 0.96618rem;
+  line-height: 0.96618rem;
+}
+
+[data-dpr="1"] .ht132 {
+  height: 0.35427rem;
+  line-height: 0.35427rem;
+}
+
+[data-dpr="2"] .ht132 {
+  height: 0.70853rem;
+  line-height: 0.70853rem;
+}
+
+[data-dpr="3"] .ht132 {
+  height: 1.0628rem;
+  line-height: 1.0628rem;
+}
+
+.ft48 {
+  font-size: 0.39rem;
+}
+
+.ft90 {
+  font-size: 0.72rem;
+}
+
+.ft150 {
+  font-size: 1.21rem;
+}
+
+.ft54 {
+  font-size: 0.43rem;
+}
+
+.ft51 {
+  font-size: 0.41rem;
+}
+
+[data-dpr="1"] .ht48 {
+  height: 0.12882rem;
+}
+
+[data-dpr="2"] .ht48 {
+  height: 0.25765rem;
+}
+
+[data-dpr="3"] .ht48 {
+  height: 0.38647rem;
+}
+
+.ft81 {
+  font-size: 0.65rem;
+}
+
+.ht148 {
+  height: 1.3rem;
+}
+
+[data-dpr="1"] .ht45 {
+  height: 0.12077rem;
+}
+
+[data-dpr="2"] .ht45 {
+  height: 0.24155rem;
+}
+
+[data-dpr="3"] .ht45 {
+  height: 0.36232rem;
+}
+
+.ft45 {
+  font-size: 0.36rem;
+}
+
+.ft42 {
+  font-size: 0.34rem;
+}
+
+.ft60 {
+  font-size: 0.48rem;
+}
+

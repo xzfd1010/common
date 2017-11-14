@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>tmt-workflow Test</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <script src="../js/flexible.js"></script>
+    <link rel="stylesheet" href="../css/style-module.css">
+    <link rel="stylesheet" type="text/css" href="../css/style-index.css"/>
+</head>
+<body>
+<div class="pre-loading pos-a"></div>
+<div class="wrapper">
+    <% var name = "实名认证" %>
+    <% include _block/header.html %>
+    <div class="innerbd layer-wrapper">
+        <div>btn-ripple</div>
+        <button class="btn-default action-btn" type="button">按钮</button>
+        <div>numberkeypad</div>
+        <button class="btn-default action-btn" type="button" id="btnPwd">显示支付插件</button>
+        <input type="password" id="inpPassword">
+        <div>
+            <h1>判断页面的前进后退</h1>
+            <div>小米 visibilitychange</div>
+            <div>performance pageshow</div>
+        </div>
+    </div>
+    <% include _block/footer.html %>
+</div>
+
+
+<script src="../js/fastclick.js"></script>
+<script src="../js/zepto.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/numberKeypad.js"></script>
+<script>
+    var numberKeypad = $('#inpPassword').NumberKeypad({
+        random: true,
+        zIndex: 330,
+        shadeClose:true,
+        callback: function (elem, password) {
+            if (password == "111111") {
+                console.log('你的密码是：' + password);
+                plugins.close();
+            } else {
+            }
+
+        }
+    });
+
+    var plugins = numberKeypad.data('NumberKeypad');
+
+
+    $("#btnPwd").on("click",function(){
+        plugins.show();
+    })
+</script>
+</body>
+</html>

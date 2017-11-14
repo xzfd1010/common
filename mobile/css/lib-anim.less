@@ -1,0 +1,44 @@
+/*常用动画库*/
+
+// btn的动画效果
+.action-btn {
+  position: relative;
+  user-select: none;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.action-btn .a-ripple {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  z-index: 1;
+}
+
+.action-btn.is-active .a-ripple {
+  animation: a-ripple .4s ease-in;
+  z-index: 1;
+}
+
+//动画
+
+@keyframes a-ripple {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    width: 200%;
+    padding-bottom: 200%;
+    opacity: 0;
+  }
+}

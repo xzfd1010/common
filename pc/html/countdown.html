@@ -15,13 +15,13 @@
 <script src="../js/jquery.countdown.js"></script>
 <script>
     $(document).on("visibilitychange",function(){
-        if(value.length >=12 && window.performance.navigation.type == 2){
+        if(value.length >=12 && window.performance.navigation.type === 2){
             alert("back")
         }
     })
 
     $(window).on("pageshow",function(event){
-        if(window.performance && window.performance.navigation.type == 2){
+        if(window.performance && window.performance.navigation.type === 2){
             alert("aaa")
         }
     });

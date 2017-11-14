@@ -1,0 +1,324 @@
+// 支付插件
+/*numberKeypad*/
+.ui-dialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+.ui-dialog.show {
+  display: flex;
+}
+
+.ui-dialog .ui-dialog-cnt {
+  position: relative;
+  width: 80%;
+  border-radius: 4px;
+  outline: 0;
+  background-clip: padding-box;
+  background-color: #fff;
+}
+
+.ui-dialog .ui-dialog-hd {
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+}
+
+.ui-dialog .ui-dialog-hd .icon-close {
+  position: absolute;
+  right: 0;
+  z-index: 11;
+  width: 40px;
+}
+
+.btn-getpwd {
+  position: absolute;
+  right: .41rem;
+  top: 0;
+  color: #2db0f4;
+  font-size: 39px;
+  line-height: 130px;
+  z-index: 11;
+}
+
+.ui-dialog .ui-dialog-hd .icon-close:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  width: 40px;
+  height: 40px;
+  background: url("../img/keypad/keldel.png") center center no-repeat;
+  background-size: cover;
+}
+
+.ui-dialog .ui-dialog-hd .title {
+  position: relative;
+  height: 120px;
+  line-height: 130px;
+  text-align: center;
+  color: #333;
+  font-size: 49px;
+}
+
+.ui-dialog .ui-dialog-bd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 71px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 18px;
+  font-size: 16px;
+}
+
+.ui-dialog-actions {
+  display: flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items: flex-end;
+  background-color: transparent;
+  padding: 0;
+}
+
+.ui-dialog-actions.show-visible {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.ui-dialog-actions.show-visible .ui-dialog-cnt {
+  transform: translateY(0%);
+}
+
+.ui-dialog-actions .ui-dialog-cnt {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0;
+  transition: all 300ms;
+  transform: translateY(100%);
+}
+
+.ui-dialog-actions .ui-dialog-bd {
+  padding:66px 0 0;
+}
+
+/*
+ * 支付密码弹窗样式
+ * */
+
+body.number-body {
+  transition: all 300ms;
+}
+
+.number-keypad .ui-dialog-hd {
+  position: relative;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.number-keypad .ui-dialog-hd .icon-close {
+  left: 0;
+  right: auto;
+  padding: 0 0.41rem;;
+  height: 0.97rem;
+}
+
+.number-keypad .password {
+  display: none;
+}
+
+.number-keypad .pwd-box {
+  width: 1140px;
+  margin: 0 .41rem;
+  font-size: 0;
+  text-align: center;
+  border: 2px solid #44b3eb;
+  border-radius: .09rem;
+  overflow: hidden;
+}
+
+.setpwd-keypad .pwd-box {
+  border: 1px solid #ccc;
+}
+
+.setpwd-keypad .keypadfocus.pwd-box {
+  border-color: #44b3eb;
+}
+
+.payboxTips {
+  padding:30px;
+  font-size: 0;
+}
+
+.payboxTips span {
+  font-size:42px;
+  line-height: 0.6rem;
+  color: #999;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.payboxTips img {
+  width:62px;
+  margin-right:35px;
+  vertical-align: middle;
+}
+
+.number-keypad .pwd-val {
+  display: inline-block;
+  position: relative;
+  width: 16.6666%;
+  height:142px;
+  line-height:142px;
+  background-color: #fff;
+  font-size:64px;
+  text-align: center;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.number-keypad .pwd-val:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
+.number-keypad .pwd-val em {
+  /*position: absolute;*/
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  background: #333;
+  border-radius: 50%;
+}
+
+.number-keypad .number-box {
+  width: 100%;
+}
+
+.number-keypad .number-flex {
+  border-bottom: 1px solid #eee;
+
+  font-size: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.number-keypad .number-flex:first-child {
+  border-top: 1px solid #eee;
+}
+
+.number-keypad .number-flex-item {
+  display: inline-block;
+  margin-bottom: 1px;
+  width: 33.3333%;
+  border-right: 1px solid #eee;
+  height:168px;
+  line-height: 168px;
+  font-size:64px;
+  vertical-align: top;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.number-keypad .number-flex-item:not(.bg-gray):active,
+.number-keypad .number-flex-item:not(.bg-gray).active {
+  background-color: #e6e6e6;
+}
+
+.number-keypad .number-flex-item:last-child {
+  border-right: 0;
+}
+
+.number-keypad .bg-gray, .number-keypad .number-delete {
+  background-color: #ccc;
+}
+
+.number-keypad .icon-delete {
+  content: '';
+  display: inline-block;
+  width: 113px;
+  height: 72px;
+  vertical-align: middle;
+  background: url(../img/keypad/keydel.png) no-repeat center center;
+  background-size: 100% auto;
+}
+
+.number-keypad .icon-hide {
+  content: '';
+  display: inline-block;
+  width: 46px;
+  height: 40px;
+  vertical-align: middle;
+  background: url(../img/keypad/icon_keyboard@2x.png) no-repeat center center;
+  background-size: 28px;
+}
+
+.number-keypad .number-bar .number-box {
+  padding-right: 80px;
+  width: 100%;
+}
+
+.number-keypad .number-bar .fun-box {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80px;
+}
+
+.number-keypad .number-bar .fun-box .ui-border-b {
+  height: 212px;
+}
+
+.number-keypad .number-bar .fun-box a {
+  border-left: 1px solid #eee;
+  display: block;
+  height: 106px;
+}
+
+.number-keypad .number-bar .fun-box a:active {
+  background-color: rgba(238, 238, 238, 0.2);
+}
+
+.number-keypad .number-bar .number-delete {
+  background: url(../img/keypad/icon_delete2@2x.png) no-repeat center center #fff;
+  background-size: 22px;
+}
+
+.number-keypad .fun-box .number-ok {
+  position: relative;
+  background: #e3e8ee;
+}
+
+.number-keypad .fun-box .number-ok span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 16px;
+}
+
+/*密码支付控件无关闭*/
+#NumberKeypad1 {
+  top: auto;
+  bottom: 0;
+  height: auto;
+}
+
+#NumberKeypad1.ui-dialog-actions .ui-dialog-bd {
+  padding-top: 0;
+
+}
+
+#NumberKeypad1.show-visible {
+  background: none;
+}
