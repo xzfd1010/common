@@ -12,17 +12,15 @@
  *      1. $(selector).countDown(options,callback)
  * 逻辑：
  *      1. 在初始化的时候需要去读取对应的key值，如果存在，继续倒计时
- *      2.
+ *      2. 暴露接口:start
  */
 
 (function ($) {
     // 插件代码
-    window.timerCount = 0;
 
     var DEFAULTS = {
         timeKey: 'timeCount',
         startTimeKey: 'startTime',
-        autoStart: false,
         totalTime: 60,
         callback: function () { // 回调
             console.log("time end");
@@ -30,11 +28,10 @@
     };
 
     function CountDownTimer(elem, options) {
-        var timerCount = localStorage.getItem("timerCount");
         // 初始化参数
         this.options = $.extend({}, DEFAULTS, options);
-        this.timeKey = this.options.timeKey + timerCount;
-        this.startTimeKey = this.options.startTimeKey + timerCount;
+        this.timeKey = this.options.timeKey;
+        this.startTimeKey = this.options.startTimeKey;
         this.autoStart = this.options.autoStart;
         this.totalTime = this.options.totalTime;
         this.startTime = parseInt(new Date().getTime() / 1000); // 当前时间
@@ -45,30 +42,22 @@
 
     }
 
-    // CountDownTimer.prototype.constructor = CountDownTimer;
-
     CountDownTimer.prototype.init = function () {
         var that = this;
         // 缓存时间
         var cacheTime = localStorage.getItem(this.timeKey);
-        // 绑定点击事件
-        this.elem.on("click", function () {
-            that.startTime = parseInt(new Date().getTime() / 1000);
-            localStorage.setItem(that.startTimeKey, that.startTime);
-            localStorage.setItem(that.timeKey, that.totalTime);
-            that.countDown()
-        });
         // 如果有缓存，直接开始倒计时
         if (cacheTime && cacheTime > 0) {
-            this.countDown();
-        } else {
-            localStorage.setItem(this.timeKey, this.totalTime);
-            localStorage.setItem(this.startTimeKey, that.startTime);
-            if (this.autoStart) {
-                this.elem.click();
-            }
+            this.countDown();// 直接倒计时
         }
+    };
 
+    // 给外部开始倒计时的接口
+    CountDownTimer.prototype.start = function () {
+        this.startTime = parseInt(new Date().getTime() / 1000);
+        localStorage.setItem(this.startTimeKey, this.startTime);
+        localStorage.setItem(this.timeKey, this.totalTime);
+        this.countDown()
     };
 
 
@@ -79,7 +68,7 @@
         // 仍需等待的时间
         var waitTime = parseInt(localStorage.getItem(this.timeKey));
         // 开始倒计时的时间
-        var startTime = parseInt(localStorage.getItem(this.startTimeKey));
+        var startTime = this.startTime;
 
         // 解决页面跳转出去或者关闭倒计时暂停问题，正常情况下pastTime每秒减一，页面跳转出去的就是减去中间间隔时间
         var pastTime = currentTime - startTime; // 已经经过的时间
@@ -102,7 +91,6 @@
 
     $.fn.countDown = function (options) {
         var elem = this;
-        localStorage.setItem("timerCount", ++window.timerCount);
-        console.log(new CountDownTimer(elem, options));
+        return new CountDownTimer(elem, options)
     }
 })(Zepto);
